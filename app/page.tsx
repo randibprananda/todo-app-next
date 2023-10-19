@@ -1,16 +1,16 @@
-import Todo from "@/components/Todo";
 import TodoDone from "@/components/TodoDone";
+import TodoUndone from "@/components/TodoUndone";
 
 const Page = () => {
   return (
     <div className="grid grid-cols-2 gap-4">
       <div>
-        <Todo />
+        <TodoUndone />
       </div>
       <div>
         <TodoDone />
       </div>
-    </div>
+    </div>k
   );
 };
 

@@ -7,19 +7,19 @@ import TodoCard from "@/components/TodoCard";
 import { fetcher } from "@/lib/utils";
 import { Todo } from "@/types";
 
-const TodoDone = () => {
+const TodoUndone = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const { data: todosData, error, mutate } = useSWR("/todos", fetcher);
 
   useEffect(() => {
     if (todosData?.data) {
-      setTodos(() => todosData?.data.filter((todo: Todo) => todo.is_complete === true));
+      setTodos(() => todosData?.data.filter((todo: Todo) => todo.is_complete === false));
     }
   }, [todosData]);
 
   return (
     <div className="flex flex-col space-y-5">
-      <h1 className="text-3xl">Todo Done</h1>
+      <h1 className="text-3xl">Todo Undone</h1>
       <div className="flex flex-col gap-2">
         {todos.length > 0
           ? todos.map((todo: Todo) => {
@@ -40,4 +40,4 @@ const TodoDone = () => {
   );
 };
 
-export default TodoDone;
+export default TodoUndone;
