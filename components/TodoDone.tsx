@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 import TodoCard from "@/components/TodoCard";
-import { fetcher } from "@/lib/utils";
+import { getTodos } from "@/service/todo.service";
 import { Todo } from "@/types";
 
 const TodoDone = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const { data: todosData, error, mutate } = useSWR("/todos", fetcher);
+  const { data: todosData, error, mutate } = useSWR("/todos", getTodos);
 
   useEffect(() => {
     if (todosData?.data) {
